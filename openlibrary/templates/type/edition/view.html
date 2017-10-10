@@ -195,17 +195,6 @@ $elif ebook_status == "borrow-user-checkedout":
             $else:
                 No ebook is available for this edition.
         </div>
-        $if page.works[0].edition_count > 1:
-            $ prev = page.get_prev()
-            $ next = page.get_next()
-            $if prev:
-                <a href="/books/$prev" title="$:_('View the previous edition of %s', page.title)">&larr; $_("Previous")</a>&nbsp;|
-            $else:
-                &larr; $_("Previous")&nbsp;|
-            $if next:
-                <a href="/books/$next" title="$:_('View the next edition of %s', page.title)">$_("Next") &rarr;</a>
-            $else:
-                $_("Next") &rarr;
     </div>
     </td>
     </tr></tbody></table>
@@ -233,15 +222,15 @@ $elif ebook_status == "borrow-user-checkedout":
                 </div>
               </div>
 
-        $ contributors = page.get('contributors', [])
-        $if contributors:
-            <div class="section">
-                <h3 class="collapse">$_("Contributors")</h3>
-                <ul class="contributors">
-                    $for c in contributors:
-                        $:display_contributor(c)
-                </ul>
-            </div>
+          $ contributors = page.get('contributors', [])
+          $if contributors:
+              <div class="section">
+                  <h3 class="collapse">$_("Contributors")</h3>
+                  <ul class="contributors">
+                      $for c in contributors:
+                          $:display_contributor(c)
+                  </ul>
+              </div>
         </div>
 
         <div class="editionAbout">
@@ -371,7 +360,7 @@ $elif ebook_status == "borrow-user-checkedout":
 
 
         <div class="editionTools">
-            $:macros.databarWork(page)
+            $:macros.databarWork(page, editions_page=True)
         </div>
 
     </div>
