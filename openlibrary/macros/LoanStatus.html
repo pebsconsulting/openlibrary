@@ -79,15 +79,15 @@ $ borrow_link = page.url() + '/borrow'
             <input type="submit" class="submit wait-btn" id="waitlist_ebook" value="Join waiting list"/>
           </form>
           $:macros.daisy(page)
-          
+
         $if editions_page:
           $ checkedout = current_and_available_loans[0] if current_and_available_loans else []
-          $if checkedout and not user_loan:                
+          $if checkedout and not user_loan:
             $if work and work.edition_count > 1:
               <div class="check-availability">
                 <p>
                   Other editions of this book may be available:
-                </p>                    
+                </p>
                 <p class="check-other-editions">
                   <a data-ol-link-track="EditionPageCheckOtherEditionsButton" href="$work.url()">Check Other Editions</a>
                 </p>
